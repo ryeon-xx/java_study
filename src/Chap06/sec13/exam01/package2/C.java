@@ -1,6 +1,6 @@
 package Chap06.sec13.exam01.package2;
 
-import Chap06.sec13.exam01.package1.B;
+import Chap06.sec13.exam01.package1.*;
 
 public class C {
     // 필드 선언
