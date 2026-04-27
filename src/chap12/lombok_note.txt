@@ -1,0 +1,47 @@
+롬복(lombok) 사용하기 (주요 함수 자동 생성해주는 라이브러리)
+- DTO 클래스(가방역할)를 작성할 때, Getter, Setter, hashCode(), equals(), toString() 메소드를 자동 생성
+- 필드가 final이 아니며, 값을 읽는 Getter는 getXxx(또는 isXxx)로, 값을 변경하는 Setter는 setXxx로 생성됨
+
+- https://projectlombok.org/download
+- https://mvnrepository.com/
+
+Jar 파일 다운로드 후 intelliJ에 수동 설정
+복사해서 intelliJ에 넣으면 자동으로 설정됨.
+
+
+롬복 플러그 인 설치
+- File -> Settings -> Plugins -> Marketplace
+- lombok 검색
+
+롬복 라이브러리 사용하기
+- 순서 1) lib 디렉토리 생성 후 lombok.jar 추가
+- 순서 2) 프로젝트에 lombok.jar을 라이브러리로 등록
+     File > Project Structure
+
+방법 2) 프로젝트에 lombok.jar을 라이브러리로 등록
+
+
+롬복 라이브러리 사용하기
+- Annotation Processors 설정
+- File > Settings > Build, Exception, Deployment > Compiler > Annotation Processors
+
+- 롬복 어노테이션
+  @NoArgsConstructor            - 기본(매개변수가 없는) 생성자 포함
+  @AllArgsConstructor           - 모든 필드를 초기화시키는 생성자 포함
+  @RequireArgsConstructor       - 기본적으로 매개변수가 없는 생성자 포함. 만약 final 또는 @NonNull이 붙은 필드가 있다면
+                                  이 필드만 초기화시키는 생성자 포함
+  @Getter                       - Getter 메소드 포함
+  @Setter                       - Setter 메소드 포함
+  @EqualsAndHashCode            - equals()와 hashCode() 메소드 포함
+  @ToString                     - toString() 메소드 포함
+
+  @Data
+     @RequiredArgsConstructor, @Getter, @Setter, @EqualsAndHashCode, @ToString 합친 것
+
+
+
+DTO(Data Transfer Object), VO(Value Object)
+- 많은 양의 데이터를 전달할 목적으로 사용하는 가방 역할의 클래스
+- 값들만 넣어서 전달하고, 전달된 값들을 꺼내어 사용하는 역할
+- 자바에서는 여러 데이터를 전달할 때 하나씩 전달하지 않고, 데이터들을 넣어서 전달할 클래스(가방역할)을 만들어 사용한다.
+
