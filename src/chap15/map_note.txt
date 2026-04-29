@@ -1,0 +1,104 @@
+/*
+ * ===== Map 컬렉션 =====
+ *
+ * - 키(key)와 값(value)으로 구성된 Map.Entry 객체를 저장
+ * - 키 중복 저장 불가, 값은 중복 가능
+ * - 기존 키와 동일한 키로 저장하면 새로운 값으로 덮어씌워짐
+ *
+ * [ 주요 메서드 ]
+ *
+ * put(K key, V value)           - 키와 값 추가, 저장되면 값 리턴
+ * containsKey(Object key)       - 키 존재 여부 (boolean)
+ * containsValue(Object value)   - 값 존재 여부 (boolean)
+ * entrySet()                    - 모든 Map.Entry 객체를 Set에 담아서 리턴
+ * get(Object key)               - 주어진 키의 값 리턴
+ * isEmpty()                     - 비어있는지 확인
+ * keySet()                      - 모든 키를 Set에 담아서 리턴
+ * size()                        - 저장된 키의 총 수 리턴
+ * values()                      - 저장된 모든 값을 Collection에 담아서 리턴
+ * clear()                       - 모든 Map.Entry(키와 값) 삭제
+ * remove(Object key)            - 주어진 키와 일치하는 Map.Entry 삭제, 삭제되면 값 리턴
+ *
+ *
+ * ===== 중첩 인터페이스 (Map.Entry) =====
+ *
+ * - 인터페이스 안에 인터페이스 정의 가능 (종속적인 경우에만 국한)
+ * - Entry는 Map과만 관련된 개념이라 Map 안에 중첩 정의
+ * - 독립적으로 사용 불가, 항상 Map과 함께 사용
+ * - 사용법: 외부인터페이스명.내부인터페이스명 ex) Map.Entry
+ *
+ * static interface Entry<K,V> {
+ *     K getKey();
+ *     V getValue();
+ *     V setValue(V value);
+ *     boolean equals(Object o);
+ *     int hashCode();
+ * }
+ *
+ *
+ * ===== 중첩 클래스 (이너 클래스) =====
+ *
+ * - 클래스 안에 클래스 정의 가능 (종속적인 경우에만 국한)
+ * - 중첩 클래스 중 내부에 들어가는 클래스 = 이너 클래스 (inner class, 안쪽 클래스)
+ *
+ * public class Outer {
+ *     static class Inner {        // 정적 중첩 클래스
+ *         void hello() {
+ *             System.out.println("정적 중첩 클래스입니다.");
+ *         }
+ *     }
+ *
+ *     public static void main(String[] args) {
+ *         Outer.Inner inner = new Outer.Inner();  // 외부 클래스 객체 없이 생성 가능
+ *         inner.hello();
+ *     }
+ * }
+ */
+
+ /*
+  * ===== Hashtable =====
+  *
+  * - 동기화된 메서드로 구성 → 멀티 스레드가 동시에 메서드 실행 불가
+  * - 멀티 스레드 환경에서 안전하게 객체 추가/삭제 가능 (thread-safe)
+  * - Vector의 Map 버전이라고 보면 됨
+  *
+  * Map<String, Integer> map = new Hashtable<String, Integer>();
+  * Map<String, Integer> map = new Hashtable<>();
+  *
+  *
+  * ===== Properties =====
+  *
+  * - Hashtable의 자식 클래스, 키와 값을 String 타입으로 제한한 컬렉션
+  * - 주로 .properties 확장자 파일을 읽을 때 사용
+  * - 프로퍼티 파일: 키=값 형태로 연결된 텍스트 파일
+  * - Properties 객체 생성 후 load()로 파일 내용을 메모리로 로드
+  *
+  * Properties properties = new Properties();
+  * properties.load(Xxx.class.getResourceAsStream("database.properties"));
+  *
+  *
+  * ===== 인증키 관리 방법 (실제 프로젝트) =====
+  *
+  * 실제 프로젝트에서는 인증키 등 민감한 정보를 Java 코드에 직접 넣지 않고 별도로 관리!
+  * → git에 올릴 때 .gitignore로 제외해야 함
+  *
+  * 1. Java 파일로 관리
+   *    public class Auth {
+   *        final static String key = "YOUR_SECRET_KEY";
+   *    }
+   *    // 사용할 때
+   *    String key = Auth.key;
+   *
+   * 2. .properties 파일로 관리
+   *    key=YOUR_SECRET_KEY
+   *    // 사용할 때 (Spring)
+   *    @Value("key")
+   *    String key;
+   *
+   * 3. .yml 파일로 관리 (Spring Boot 주로 사용)
+   *    naver:
+   *      key: YOUR_SECRET_KEY
+   *    // 사용할 때
+   *    @Value("naver.key")
+   *    String key;
+  */

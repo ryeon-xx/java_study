@@ -1,0 +1,38 @@
+/*
+ * ===== Set 컬렉션 =====
+ *
+ * - 저장 순서 유지 X
+ * - 중복 저장 불가, null은 하나만 저장 가능 (수학의 집합 개념)
+ *
+ * [ 주요 메서드 ]
+ *
+ * add(E e)                  - 저장 성공 시 true, 중복이면 false 리턴
+ * contains(Object o)        - 저장 여부 확인 (boolean)
+ * isEmpty()                 - 비어있는지 확인
+ * iterator()                - 저장된 객체를 한 번씩 가져오는 반복자 리턴
+ * size()                    - 전체 객체 수 리턴
+ * clear()                   - 모든 객체 삭제
+ * remove(Object o)          - 주어진 객체 삭제
+ */
+
+/*
+ * ===== HashSet =====
+ *
+ * - iterator() 메서드로 반복자를 얻어 객체를 하나씩 가져옴
+ *
+ * Set<E> set = new HashSet<>();
+ * Iterator<E> iterator = set.iterator();
+ *
+ * [ Iterator 메서드 ]
+ *
+ * hasNext()  - 가져올 객체가 있으면 true, 없으면 false 리턴
+ * next()     - 객체를 하나 가져옴
+ * remove()   - next()로 가져온 객체를 Set에서 제거
+ *
+ * [ 사용 예시 ]
+ *
+ * while(iterator.hasNext()) {
+ *     E e = iterator.next();
+ * }
+ */
+

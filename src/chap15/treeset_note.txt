@@ -1,0 +1,47 @@
+/*
+ * ===== TreeSet =====
+ *
+ * - 이진 트리를 기반으로 한 Set 컬렉션
+ * - 중복 X, 자동 정렬, 검색에 특화된 함수 제공 (속도 매우 빠름)
+ * - 여러 노드가 트리 형태로 연결된 구조
+ *   루트 노드에서 시작해 각 노드에 최대 2개의 노드 연결 가능
+ * - 객체 저장 시 부모 노드와 비교해서
+ *   낮은 것 → 왼쪽 자식 노드
+ *   높은 것 → 오른쪽 자식 노드
+ *
+ * TreeSet<E> treeSet = new TreeSet<E>();
+ * TreeSet<E> treeSet = new TreeSet<>();
+ *
+ * ※ Set 타입 변수에 대입해도 되지만 TreeSet 타입으로 대입하는 이유는
+ *   검색 관련 메서드가 TreeSet에만 정의되어 있기 때문
+ *
+ *
+ * [ 주요 메서드 ]
+ *
+ * first()                           - 제일 낮은 객체 리턴
+ * last()                            - 제일 높은 객체 리턴
+ * lower(E e)                        - 주어진 객체보다 바로 아래 객체 리턴
+ * higher(E e)                       - 주어진 객체보다 바로 위 객체 리턴
+ * floor(E e)                        - 동등한 객체가 있으면 리턴, 없으면 바로 아래 객체 리턴
+ * ceiling(E e)                      - 동등한 객체가 있으면 리턴, 없으면 바로 위 객체 리턴
+ * pollFirst()                       - 제일 낮은 객체를 꺼내고 컬렉션에서 제거
+ * pollLast()                        - 제일 높은 객체를 꺼내고 컬렉션에서 제거
+ * descendingIterator()              - 내림차순으로 정렬된 Iterator 리턴
+ * descendingSet()                   - 내림차순으로 정렬된 NavigableSet 리턴
+ *
+ *
+ * [ 범위 검색 메서드 ] - 특정 조건에 맞는 범위 검색 가능
+ *
+ * headSet(E toElement, boolean inclusive)
+ *   - 주어진 객체보다 낮은 객체들을 NavigableSet으로 리턴
+ *   - inclusive: true면 주어진 객체 포함, false면 미포함
+ *
+ * tailSet(E fromElement, boolean inclusive)
+ *   - 주어진 객체보다 높은 객체들을 NavigableSet으로 리턴
+ *   - inclusive: true면 주어진 객체 포함, false면 미포함
+ *
+ * subSet(E fromElement, boolean fromInclusive, E toElement, boolean toInclusive)
+ *   - 시작과 끝으로 주어진 객체 사이의 객체들을 NavigableSet으로 리턴
+ *   - fromInclusive: 시작 객체 포함 여부
+ *   - toInclusive: 끝 객체 포함 여부
+ */

@@ -1,0 +1,66 @@
+/*
+ * ===== Comparable과 Comparator =====
+ *
+ * TreeSet/TreeMap은 자동 정렬 기능이 있는데,
+ * 어떤 필드를 기준으로 정렬할지 모를 때 아래 2가지 방법으로 기준을 정해줄 수 있음
+ *
+ *
+ * ===== 방법1: Comparable =====
+ *
+ * - TreeSet에 저장되는 객체, TreeMap에 저장되는 키 객체를 정렬
+ * - Comparable 인터페이스를 구현한 클래스 내에 compareTo() 메서드를 재정의
+ * - 비교 결과를 정수 값으로 리턴
+ *
+ * compareTo(T o)
+ *   - 주어진 객체와 같으면 0 리턴
+ *   - 주어진 객체보다 적으면 음수 리턴
+ *   - 주어진 객체보다 크면 양수 리턴
+ *
+ * public class Person implements Comparable<Person> {
+ *     int age;
+ *
+ *     @Override
+ *     public int compareTo(Person o) {
+ *         return this.age - o.age;  // age 기준 오름차순
+ *     }
+ * }
+ *
+ *
+ * ===== 방법2: Comparator =====
+ *
+ * - 비교 기능이 없는 Comparable 미구현 객체를 저장하려면 비교자 Comparator를 제공
+ * - 별도의 Comparator 인터페이스를 구현한 클래스를 만들어
+ *   TreeSet/TreeMap 생성 시 매개변수로 넣어줌
+ * - compare() 메서드를 재정의해서 비교 결과를 정수 값으로 리턴
+ *
+ * compare(T o1, T o2)
+ *   - o1과 o2가 동등하면 0 리턴
+ *   - o1이 o2보다 앞에 오게 하려면 음수 리턴
+ *   - o1이 o2보다 뒤에 오게 하려면 양수 리턴
+ *
+ * TreeSet<E> treeSet = new TreeSet<E>(new ComparatorImpl());
+ * TreeMap<K,V> treeMap = new TreeMap<K,V>(new ComparatorImpl());
+ */
+
+ * ===== Queue =====
+  *
+  * - FIFO 자료구조에서 사용되는 메서드를 정의한 인터페이스
+  * - LinkedList: Queue 인터페이스를 구현한 대표적인 클래스
+  * - 가장 먼저 넣은 데이터를 가장 먼저 꺼내는 선입선출 구조
+  * - 넣기 = 인큐(enqueue), 꺼내기 = 디큐(dequeue)
+  * - 데이터가 나오는 쪽 = 프론트(front)
+  * - 데이터를 넣는 쪽 = 리어(rear/back)
+  *
+  * Queue<E> queue = new LinkedList<E>();
+  * Queue<E> queue = new LinkedList<>();
+  *
+  * [ 주요 메서드 ]
+  *
+  * offer(E e)   - 큐의 맨 뒤에 객체를 넣음 (성공 true, 실패 false)
+  * poll()       - 큐의 맨 앞 객체를 가져오고 제거
+  * add(item)    - 큐의 맨 뒤에 항목 삽입 (성공 true, 실패 false)
+  * element()    - 맨 앞에 있는 항목 리턴
+  * peek()       - 큐의 맨 앞 객체를 가져옴 (제거 X, 값만 가져올 때 사용)
+  * remove()     - 큐의 맨 위 객체를 가져오고 제거
+  * isEmpty()    - 비어있는지 확인
+  * size()       - queue의 항목 개수
