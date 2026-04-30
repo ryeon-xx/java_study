@@ -1,0 +1,24 @@
+============================================================
+수정할 수 없는 컬렉션 (Immutable Collection)
+============================================================
+
+■ 개념
+- 요소를 추가, 삭제할 수 없는 컬렉션
+- 컬렉션 생성 시 저장된 요소를 변경하고 싶지 않을 때 유용
+- 읽기 전용(readOnly) = Immutable(이뮤터블)
+
+■ of() - 새로 만들기
+  List<E>   immutableList = List.of(E... elements);
+  Set<E>    immutableSet  = Set.of(E... elements);
+  Map<K,V>  immutableMap  = Map.of(K k1, V v1, K k2, V v2, ...);
+
+■ copyOf() - 기존 컬렉션을 복사해서 만들기
+  List<E>   immutableList = List.copyOf(Collection<E> coll);
+  Set<E>    immutableSet  = Set.copyOf(Collection<E> coll);
+  Map<K,V>  immutableMap  = Map.copyOf(Map<K,V> map);
+
+■ 배열로부터 만들기
+  String[] arr = { "A", "B", "C" };
+  List<String> immutableList = Arrays.asList(arr);
+
+============================================================

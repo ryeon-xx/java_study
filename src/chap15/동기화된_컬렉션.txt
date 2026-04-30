@@ -1,0 +1,32 @@
+============================================================
+동기화된 컬렉션 (Synchronized Collection)
+============================================================
+
+■ 개념
+- 멀티 스레드 환경에서 여러 스레드가 동시에 컬렉션에 접근하면
+  데이터가 망가질 수 있음 (thread-safe하지 않음)
+- Collections의 synchronizedXXX() 메서드로
+  비동기화된 컬렉션을 동기화된 컬렉션으로 래핑할 수 있음
+- 한 스레드가 접근 중이면 다른 스레드는 대기 (X 표시)
+
+■ 원래부터 동기화된 클래스
+- Vector, Hashtable
+
+■ Collections로 동기화하는 방법
+
+  [List]
+  List<T> list = Collections.synchronizedList(new ArrayList<T>());
+
+  [Set]
+  Set<E> set = Collections.synchronizedSet(new HashSet<E>());
+
+  [Map]
+  Map<K, V> map = Collections.synchronizedMap(new HashMap<K, V>());
+
+■ 리턴 타입별 메서드 정리
+  리턴 타입   메서드                              설명
+  List<T>    synchronizedList(List<T> list)    List를 동기화된 List로 리턴
+  Map<K,V>   synchronizedMap(Map<K,V> m)       Map을 동기화된 Map으로 리턴
+  Set<T>     synchronizedSet(Set<T> s)         Set을 동기화된 Set으로 리턴
+
+============================================================
